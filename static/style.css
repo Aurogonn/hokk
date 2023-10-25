@@ -1,0 +1,385 @@
+@import url('https://rsms.me/inter/inter-ui.css');
+
+body {
+    font-family: 'Inter UI', sans-serif;
+    background-color: #e2e2e5;
+    color: #262323;
+    background-color: #000;
+}
+
+.header {
+    background-color: #1111;
+    color: #262323;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.img-header {
+    width: 200px;
+    height: 150px;
+}
+
+.menu{
+    color: #262323;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}   
+
+.menu a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.menu-but {
+    margin-right: 13px;
+    margin-top: 10%;
+}
+
+.menu a:hover {
+    color: #d34141;
+}
+
+.movies {
+    background-color: #e2e2e5;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding-right: 100px;
+    padding-left: 100px;
+    background-color: black;
+}
+
+.movies ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+/* .movie {
+    border: 1px solid #d34141;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    height: 450px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+  } */
+
+  .movie {
+    background-color: transparent;
+    background-image: url("{{ movie.image_url }}");
+    width: 250px;
+    height: 450px;
+    perspective: 1000px;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  
+  .innerCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  
+  .movie:hover .innerCard {
+    transform: rotateY(180deg);
+  }
+  
+  .frontSide,
+  .backSide {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 0 0 0.3em rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    padding: 10px;
+  }
+  
+  .frontSide,
+  .frontSide::before {
+    background: linear-gradient(43deg, rgb(11, 11, 12) 0%, rgb(90, 2, 2) 46%, rgb(98, 1, 1) 100%);
+  }
+  
+  .backSide,
+  .backSide::before {
+    background-image: linear-gradient(160deg, #01070b 0%, #ff2222 100%);
+  }
+  
+  .backSide {
+    transform: rotateY(180deg);
+  }
+  
+  .frontSide::before,
+  .backSide::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    z-index: -1;
+    border-radius: 1em;
+    filter: blur(20px);
+    animation: animate 5s linear infinite;
+  }
+  
+  @keyframes animate {
+    0% {
+      opacity: 0.3;
+    }
+  
+    80% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0.3;
+    }
+  }
+
+.add-to-bookmarks {
+    margin-top: auto;
+    bottom: 0;
+    text-decoration: none;
+}
+
+.movie img {
+    width: 96px;
+    height: 144px;
+}
+
+.h2-card {
+    font-size: 16px;
+    margin: 5px 0;
+    padding: 0;
+    color: #fefefe;
+}
+
+.movie p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: white;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.center {
+    display: inline-block;
+}
+
+.movie a {
+    color: #d34141
+}
+
+/* Стили для строки поиска */
+
+
+.search {
+    text-align: center; /* Выравнивание по центру */
+    margin: 20px auto; /* Выравнивание по горизонтали и отступ сверху/снизу */
+}
+
+.search-form {
+    display: inline-block; /* Сделать форму в строчном режиме */
+    border: 2px solid #333; /* Граница для стилизации */
+    padding: 10px; /* Внутренний отступ */
+    border-radius: 5px; /* Скругление углов */
+    background-color: #fff; /* Цвет фона */
+}
+
+input[type="text"] {
+    width: 800px; /* Ширина поля ввода */
+    padding: 5px; /* Внутренний отступ */
+    border: none; /* Убрать границу поля ввода */
+}
+
+button[type="submit"] {
+    background-color: #333; /* Цвет кнопки */
+    color: #fff; /* Цвет текста на кнопке */
+    padding: 5px 10px; /* Внутренний отступ */
+    border: none; /* Убрать границу */
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Изменить вид курсора при наведении */
+}
+
+/* movie_details.css */
+.movie-details {
+    background-color: #f0f0f0; /* Серый цвет фона */
+    padding: 20px;
+    border: 1px solid #ddd; /* Рамка вокруг блока */
+    text-align: center; /* Выравнивание содержимого по центру */
+}
+
+.movie-details img {
+    max-width: 100%; /* Максимальная ширина изображения по размеру контейнера */
+    height: auto; /* Автоматическая высота, сохраняющая пропорции */
+    margin: 20px 0; /* Отступы сверху и снизу изображения */
+}
+
+.movie-details h2 {
+    font-size: 24px; /* Размер шрифта заголовка */
+}
+
+.movie-details p {
+    font-size: 16px; /* Размер шрифта текста */
+    margin: 10px 0; /* Отступы между абзацами */
+}
+
+
+
+.add-to-bookmarks:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+    border: 1px solid #0056b3; /* Рамка при наведении */
+}
+
+.movie-link {
+    /* Ваши стили для ссылок здесь */
+    color: #000; /* Цвет текста */
+    text-decoration: none; /* Убрать подчеркивание */
+    /* Другие стили */
+}
+/* Убираем подчеркивание с ссылок */
+a {
+    text-decoration: none;
+}
+
+/* Стили для ссылок, находящихся внутри .movie, чтобы они не были подчеркнутыми */
+.movie a {
+    text-decoration: none;
+}
+
+
+
+
+/* Кнопка тест */
+
+button,
+button::after {
+ padding: 16px 20px;
+ font-size: 18px;
+ background: linear-gradient(45deg, transparent 5%, #7c0303 5%);
+ border: 0;
+ color: #fff;
+ letter-spacing: 3px;
+ line-height: 1;
+ /* box-shadow: 6px 0px 0px #00e6f6; */
+ outline: transparent;
+ position: relative;
+}
+
+button::after {
+ --slice-0: inset(50% 50% 50% 50%);
+ --slice-1: inset(80% -6px 0 0);
+ --slice-2: inset(50% -6px 30% 0);
+ --slice-3: inset(10% -6px 85% 0);
+ --slice-4: inset(40% -6px 43% 0);
+ --slice-5: inset(80% -6px 5% 0);
+ content: "HOVER ME";
+ display: block;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+ text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+ clip-path: var(--slice-0);
+}
+
+button:hover::after {
+ animation: 1s glitch;
+ animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+ 0% {
+  clip-path: var(--slice-1);
+  transform: translate(-20px, -10px);
+ }
+
+ 10% {
+  clip-path: var(--slice-3);
+  transform: translate(10px, 10px);
+ }
+
+ 20% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 10px);
+ }
+
+ 30% {
+  clip-path: var(--slice-3);
+  transform: translate(0px, 5px);
+ }
+
+ 40% {
+  clip-path: var(--slice-2);
+  transform: translate(-5px, 0px);
+ }
+
+ 50% {
+  clip-path: var(--slice-3);
+  transform: translate(5px, 0px);
+ }
+
+ 60% {
+  clip-path: var(--slice-4);
+  transform: translate(5px, 10px);
+ }
+
+ 70% {
+  clip-path: var(--slice-2);
+  transform: translate(-10px, 10px);
+ }
+
+ 80% {
+  clip-path: var(--slice-5);
+  transform: translate(20px, -10px);
+ }
+
+ 90% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 0px);
+ }
+
+ 100% {
+  clip-path: var(--slice-1);
+  transform: translate(0);
+ }
+}

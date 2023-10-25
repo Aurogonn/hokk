@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Результаты поиска</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Результаты поиска</h1>
+        <div class="menu">
+            <a href="{{ url_for('index') }}">Главная</a>
+        </div>
+    </div>
+    <div class="search">
+        <form action="{{ url_for('search') }}" method="GET" class="search-form">
+            <input type="text" name="query" value="{{ query }}" placeholder="Поиск фильмов">
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+    <div class="movies">
+        <ul>
+            {% for movie in movies %}
+                <li>
+                    <!-- <div class="movie">
+                        <div><img src="{{ movie.image_url }}" alt="Movie Poster"></div>
+                        <h2><a href="{{ url_for('movie_details', movie_id=movie.id) }}">{{ movie.title }}</a></h2>
+                        <p>Rating: {{ movie.rating }}</p>
+                        <p>Description: {{ movie.description }}</p>
+                        <button type="submit" class="btn btn-danger" onclick="window.location.href='{{ url_for('add_to_bookmarks', movie_id=movie.id) }}'">Добавить в закладки</button>
+                    </div> -->
+                    <div class="movie">
+                        <div class="innerCard">
+                            <div class="frontSide">
+                                <div><img src="{{ movie.image_url }}" alt="Movie Poster"></div>
+                                <h2><a href="{{ url_for('movie_details', movie_id=movie.id) }}">{{ movie.title }}</a></h2>
+                            </div>
+                            <div class="backSide">
+                                <p>Rating: {{ movie.rating }}</p>
+                                <p>Description: {{ movie.description }}</p>
+                                <button type="submit" class="btn btn-danger" onclick="window.location.href='{{ url_for('add_to_bookmarks', movie_id=movie.id) }}'">Добавить в закладки</button>                          
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
